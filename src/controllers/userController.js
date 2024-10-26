@@ -23,7 +23,6 @@ const signup = catchasynErrors(async(req, res, next) =>{
         role
     });
     sendToken(user, 200, "User registered successfully!!", res);
-
 });
 
 export const login = catchasynErrors(async(req, res, next) =>{
@@ -54,7 +53,7 @@ export const logout =  catchasynErrors(async(req, res, next) =>{
     res
      .status(200)
      .cookie("token", "", {
-        expires: Date.now(),
+        expired: Date.now(),
         httpOnly: true
      })
      .json({
