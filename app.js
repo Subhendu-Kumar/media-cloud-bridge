@@ -4,7 +4,7 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import dbConnection from "./src/db/dbConnection.js";
 import userRouter from "./src/routes/userRouter.js";
-import errorMiddleware from "./src/middlewares/Error.js";
+import errorMiddleware from "./src/middlewares/allError.js";
 
 const app = express();
 dotenv.config();
@@ -14,7 +14,7 @@ app.use(cors());
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(errorMiddleware);
+app.use(errorMiddleware());
 
 dbConnection();
 
