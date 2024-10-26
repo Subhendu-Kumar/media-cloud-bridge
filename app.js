@@ -4,8 +4,7 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import dbConnection from "./src/db/dbConnection.js";
 import userRouter from "./src/routes/userRouter.js";
-import errorMiddleware from "./src/middlewares/error.js";
-// import blogRouter from './src/routes/blogRouter.js';
+import errorMiddleware from "./src/middlewares/Error.js";
 
 const app = express();
 dotenv.config();
