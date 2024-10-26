@@ -6,17 +6,17 @@ export class ErrorHandler extends Error {
 }
 
 const errorMiddleware = (err = {}, req, res, next) => {
-  err.message = err.message || "Internal server error";
-  err.statusCode = err.statusCode || 500;
+  const statusCode = err?.statusCode || 500;
+  const message = err?.message || "Internal server error";
 
-  if (err.name === "CastError") {
+  if (err?.name === "CastError") {
     const message = `Invalid: Resource not found ${err.path}`;
     err = new ErrorHandler(message, 404);
   }
 
-  return res.status(err.statusCode).json({
+  return res.status(statusCode).json({
     success: false,
-    message: err.message,
+    message: message,
   });
 };
 
