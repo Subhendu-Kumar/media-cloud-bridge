@@ -14,7 +14,6 @@ app.use(cors());
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(errorMiddleware());
 
 dbConnection();
 
@@ -23,5 +22,6 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/v1", userRouter);
+app.use(errorMiddleware());
 
 export default app;
