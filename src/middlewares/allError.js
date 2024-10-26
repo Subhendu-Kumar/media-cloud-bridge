@@ -5,8 +5,8 @@ export class ErrorHandler extends Error {
   }
 }
 
-const errorMiddleware = (err = {}, req, res, next) => {
-  console.log('Error Middleware Invoked', { err, req, res });
+const errorMiddleware = (err, req, res, next) => {
+  console.log("Error Middleware Invoked", err);
   let statusCode = err.statusCode || 500;
   let message = err.message || "Internal server error";
 
@@ -15,7 +15,7 @@ const errorMiddleware = (err = {}, req, res, next) => {
     statusCode = 404;
   }
 
-  return res.status(statusCode).json({
+  res.status(statusCode).json({
     success: false,
     message,
   });
