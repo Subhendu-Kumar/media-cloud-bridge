@@ -34,6 +34,12 @@ app.post("/upload/image", async (req, res) => {
       message: "No file provided.",
     });
   }
+  if (!req.files.image) {
+    return res.status(400).json({
+      success: false,
+      message: "No image file provided.",
+    });
+  }
   const { image } = req.files;
   const allowedFormats = ["image/png", "image/jpeg", "image/webp"];
   if (!allowedFormats.includes(image.mimetype)) {
@@ -77,6 +83,12 @@ app.post("/upload/video", async (req, res) => {
     return res.status(400).json({
       success: false,
       message: "No file provided.",
+    });
+  }
+  if (!req.files.video) {
+    return res.status(400).json({
+      success: false,
+      message: "No video file provided.",
     });
   }
   const { video } = req.files;
